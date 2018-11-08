@@ -1,0 +1,261 @@
+@import './variables';
+@import './mixins';
+@import './flexboxgrid';
+@import '~normalize.css';
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+}
+
+body {
+  flex: 1 1 auto;
+}
+
+input[type='number'],
+input[type='tel'],
+input[type='email'],
+input[type='password'],
+input[type='text'],
+input[type='url'] {
+  padding: 0 0.6rem;
+  line-height: 4rem;
+  height: 4rem;
+  border-radius: $border-radius;
+  border: 1px solid $peach;
+  @include boxshadow(topright, small, light, inset);
+  font-weight: 300;
+  min-width: 6rem;
+  width: 100%;
+
+  &:disabled {
+    background-color: $nude;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+input[type='number'] {
+  @include bold;
+}
+
+textarea {
+  flex-grow: 1;
+  resize: none;
+  padding: 0.9rem 0.6rem;
+  height: 4rem;
+  line-height: 1.5;
+  border-radius: $border-radius;
+  border: 1px solid $peach;
+  box-shadow: inset 2px 2px 4px -1px rgba(0, 0, 0, 0.375);
+  font-weight: 300;
+  min-width: 6rem;
+  width: 100%;
+
+  &:disabled {
+    background-color: $nude;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+fieldset,
+legend {
+  display: block;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+a, a:active, a:visited {
+  color: $magenta;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $medium-gray;
+  font-weight: 300;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $medium-gray;
+  font-weight: 300;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $medium-gray;
+  font-weight: 300;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: $medium-gray;
+  font-weight: 300;
+}
+
+::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 0.8rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 1rem;
+  border-radius: 1rem;
+  background: rgba($marigold,0.75);
+  -webkit-box-shadow: inset 0 0 0.5rem rgba($brown,0.3);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba($light-gray,0.3);
+}
+
+.contain {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+a.button {
+  display: block;
+}
+
+.button,
+a.button {
+  @include button-base;
+  background-color: $marigold;
+  color: $white;
+
+  &:hover {
+    background-color: lighten($marigold, 30%);
+  }
+
+  &--link {
+    color: $magenta;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
+    text-align: left;
+    outline: none;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &--next {
+    font-size: 3rem;
+    animation-name: bounce;
+    animation-duration: 5s;
+    animation-delay: 2s;
+    animation-iteration-count: 2;
+    animation-timing-function: linear;
+  }
+
+  &--icon {
+    display: inline-block;
+    color: $magenta;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    outline: none;
+    height: auto;
+    line-height: inherit;
+    text-align: inherit;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &--white-text {
+    color: $white;
+  }
+}
+
+.radio {
+  display: inline-block;
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+  padding-left: 1.7em;
+
+  input[type=radio] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__label {
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 1.0rem;
+      width: 1.0rem;
+      border-radius: 50%;
+      background-color: $medium-gray;
+      left: 0.3rem;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 1.6rem;
+      width: 1.6rem;
+      border-radius: 50%;
+      border: 1px solid $medium-gray;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+
+  input:checked ~ &__label::before {
+    opacity: 1;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 2rem;
+
+  &__label {
+    display: block;
+    color: $dark-gray;
+    margin-bottom: 0.5rem;
+  }
+
+  &--no-errors {
+    margin-bottom: 0;
+  }
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.align-right {
+  text-align: right;
+}

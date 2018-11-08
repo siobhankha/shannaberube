@@ -1,0 +1,42 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.landing {
+  position: relative;
+  background: $magenta $gradient;
+  height: 100vh;
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: padding 0.2s ease-in-out;
+
+  @include breakpoint(md) {
+    padding: 6rem 4rem;
+  }
+
+  &__title {
+    @include display-text;
+    font-size: 10rem;
+    color: $white;
+    margin: 0 0 4rem 0;
+    line-height: 1;
+    transition: font-size 0.2s ease-in-out;
+
+    @include breakpoint(md) {
+      font-size: 15rem;
+    }
+  }
+
+  &__description {
+    color: $white;
+    font-size: 2rem;
+  }
+
+  .button {
+    position: absolute;
+    bottom: 2rem;
+  }
+}

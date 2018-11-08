@@ -1,0 +1,188 @@
+// An block has an element.
+@mixin elem($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+// An element or block has a mod.
+@mixin mod($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+@mixin fa($char) {
+  content: $char;
+  display: inline-block;
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  @content;
+}
+
+@mixin fa-before($char) {
+  &::before {
+    @include fa($char) {
+      @content;
+    }
+  }
+}
+
+@mixin fa-after($char) {
+  &::after {
+    @include fa($char) {
+      @content;
+    }
+  }
+}
+
+@mixin display-text {
+  font-family: 'Cheddar Jack';
+  font-weight: 100;
+}
+
+@mixin bold {
+  font-weight: 700;
+}
+
+@mixin regular {
+  font-weight: 400;
+}
+
+@mixin wordwrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+@mixin button-base {
+  border: none;
+  border-radius: $border-radius;
+  padding: 0 2.4rem;
+  height: 4rem;
+  line-height: 4rem;
+  cursor: pointer;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+@mixin triangle($direction, $sizeH, $sizeV, $color){
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    -moz-transform: scale(.9999);
+
+  @if $direction == top {
+    border-width: 0 $sizeV $sizeH $sizeV;
+    border-color: transparent transparent $color transparent;
+  }
+  @if $direction == bottom{
+    border-width: $sizeV $sizeH 0 $sizeV;
+    border-color: $color transparent transparent transparent;
+  }
+  @if $direction == left{
+    border-width: $sizeV $sizeH $sizeV 0;
+    border-color: transparent $color transparent transparent;
+  }
+  @if $direction == right{
+    border-width: $sizeV 0 $sizeV $sizeH;
+    border-color: transparent transparent transparent $color;
+  }
+  @if $direction == topright{
+    border-width: 0 $sizeH $sizeV 0;
+    border-color: transparent $color transparent transparent;
+  }
+  @if $direction == bottomright{
+    border-width: 0 0 $sizeH $sizeV;
+    border-color: transparent transparent $color transparent;
+  }
+  @if $direction == bottomleft{
+    border-width: $sizeH 0 0 $sizeV;
+    border-color: transparent transparent transparent $color;
+  }
+  @if $direction == topleft{
+    border-width: $sizeH $sizeV 0 0;
+    border-color: $color transparent transparent transparent;
+  }
+}
+
+// sizes: small, large
+// opacity: light, dark
+// inset: "inset", "false"
+@mixin boxshadow($direction, $size: small, $opacity: dark, $inset: false, $color: $black) {
+  $x: 0.2rem;
+  $alpha: 0.5;
+
+  @if $size == large {
+    $x: 0.4rem
+  }
+  @if $opacity == light {
+    $alpha: 0.25;
+  }
+
+  @if $direction == all {
+    box-shadow: 0 0 ($x * 4) rgba($color, $alpha);
+  }
+  @if $direction == bottom {
+    box-shadow: 0 $x ($x * 2) rgba($color, $alpha);
+  }
+  @if $direction == top {
+    box-shadow: 0 ($x * -1) ($x * 2) rgba($color, $alpha);
+  }
+  @if $direction == right {
+    box-shadow: $x 0 ($x * 2) rgba($color, $alpha);
+  }
+  @if $direction == left {
+    box-shadow: ($x * -1) 0 ($x * 2) rgba($color, $alpha);
+  }
+  @if $direction == bottomleft {
+    box-shadow: $x $x ($x * 2) rgba($color, $alpha);
+  }
+  @if $direction == bottomright {
+    box-shadow: ($x * -1) $x ($x * 2) rgba($color, $alpha);
+  }
+
+  @if $direction == top and $inset == inset {
+    box-shadow: inset 0 $x ($x * 2) ($x * -1 / 2) rgba($color, $alpha);
+  }
+  @if $direction == topright and $inset == inset {
+    box-shadow: inset $x $x ($x * 2) ($x * -1 / 2) rgba($color, $alpha);
+  }
+}
+
+@mixin not($ignoreList...) {
+  @if (length($ignoreList) == 1){
+    $ignoreList: nth($ignoreList,1);
+  }
+  $notOutput: '';
+  @each $not in $ignoreList {
+    $notOutput: $notOutput + ':not(#{$not})';
+  }
+  &#{$notOutput} {
+    @content;
+  }
+}
+
+ @mixin breakpoint($point) {
+   @if $point == lg {
+     @media (min-width: 120rem) { @content ; }
+  }
+    @else if $point == lg {
+     @media (min-width: 80rem) { @content ; }
+  }
+   @else if $point == md {
+     @media (min-width: 54rem)  { @content ; }
+  }
+  @else if $point == sm {
+     @media (min-width: 32rem)  { @content ; }
+
+  }
+}

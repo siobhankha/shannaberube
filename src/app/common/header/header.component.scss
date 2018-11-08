@@ -1,0 +1,105 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  z-index: 4;
+  background: $magenta $gradient;
+  padding: 1rem;
+  transition: all 0.3s ease;
+
+  @include breakpoint(md) {
+    padding: 0 4rem;
+  }
+
+  &__logo {
+    visibility: visible;
+    opacity: 1;
+    color: $white;
+    font-size: 3rem;
+    margin: 0;
+    @include display-text;
+    transition: all 0.3s ease;
+
+    @include breakpoint(md) {
+      font-size: 5rem;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-item {
+    position: relative;
+    font-size: 1.2rem;
+    margin: 0 0.25rem;
+    transition: margin 0.3s ease;
+
+    @include breakpoint(md) {
+      font-size: 1.4rem;
+      margin: 0 1rem;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    button {
+      border: none;
+      background: none;
+      color: $white;
+      @include bold;
+      padding: 0.5rem;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s ease-in-out;
+
+      &::after {
+        position: absolute;
+        bottom: -0.25rem;
+        left: 0;
+        content: '';
+        height: 2px;
+        width: 0;
+        transition: width 0.15s ease-in-out;
+        background-color: $white;
+      }
+
+      &:hover,
+      &:focus {
+        &::after {
+          width: 100%;
+          transition: width 0.3s ease-in-out;
+        }
+      }
+    }
+
+    &--active {
+      button::after {
+        width: 100%;
+        transition: width 0.3s ease-in-out;
+      }
+    }
+  }
+
+  &--landing {
+    background: transparent;
+    & .header__logo {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+}

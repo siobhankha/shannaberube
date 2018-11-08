@@ -1,0 +1,17 @@
+<header block='header' [mod]='format'>
+  <h1 elem='logo' (click)='scroll(0)' role='button' [attr.aria-hidden]='format != "landing"'>Shanna Berube</h1>
+
+  <nav>
+    <ul elem='nav'>
+      <li elem='nav-item' [mod]='{active: activeSection == 0}'>
+        <button (click)='scroll(0)'>Hi</button>
+      </li>
+      <li elem='nav-item' [mod]='{active: activeSection == 1}'>
+        <button (click)='scroll(1)'>About</button>
+      </li>
+      <li elem='nav-item' [mod]='{active: activeSection == 2}'>
+        <button (click)='scroll(2)'>Contact</button>
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,20 @@
+<app-header
+  [format]='{landing: activeSection == 0}'
+  [activeSection]='activeSection'
+  (scrollToSection)='scroll($event)'>
+</app-header>
+
+<div block='app' [mod]='"section-"+activeSection' role='main'>
+  <app-landing elem='section' mod='landing'
+    (scrollToSection)='scroll($event)'
+    [attr.aria-hidden]='activeSection != 0'>
+  </app-landing>
+  <app-about elem='section' mod='about'
+    (scrollToSection)='scroll($event)'
+    [attr.aria-hidden]='activeSection != 1'>
+  </app-about>
+  <app-contact elem='section' mod='contact'
+    (scrollToSection)='scroll($event)'
+    [attr.aria-hidden]='activeSection != 2'>
+  </app-contact>
+</div>

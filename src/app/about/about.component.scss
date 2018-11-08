@@ -1,0 +1,29 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.about {
+  height: calc(100vh - 6rem);
+  padding: 0 2rem 4rem;
+  margin-top: 6rem;
+  overflow-y: auto;
+
+  transition: padding 0.2s ease-in-out;
+
+  @include breakpoint(md) {
+    padding: 0 4rem 4rem;
+  }
+
+  &__heading {
+    color: $brown;
+    @include bold;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 2rem 0;
+  }
+
+  &__description {
+    color: $marigold;
+    font-size: 2rem;
+  }
+}

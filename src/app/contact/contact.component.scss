@@ -1,0 +1,20 @@
+@import '../../scss/mixins';
+@import '../../scss/variables';
+
+.contact {
+  height: calc(100vh - 6rem);
+  padding: 0 2rem 4rem;
+  margin-top: 6rem;
+  overflow-y: auto;
+
+  transition: padding 0.2s ease-in-out;
+
+  @include breakpoint(md) {
+    padding: 0 4rem 4rem;
+  }
+
+  &__description {
+    color: $marigold;
+    font-size: 2rem;
+  }
+}

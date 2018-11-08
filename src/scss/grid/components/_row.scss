@@ -1,0 +1,38 @@
+@import '../bootstrap.scss';
+
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: (-(map_get($gutter, 'height'))) (-(map_get($gutter, 'width') / 2)) (map_get($gutter, 'height'));
+  padding: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include variant('no-gutters') {
+    margin: 0;
+  }
+
+  @include variant('top') {
+    align-items: flex-start;
+  }
+
+  @include variant('center') {
+    align-items: center;
+  }
+
+  @include variant('bottom') {
+    align-items: flex-end;
+  }
+
+  @include variant('reverse') {
+    flex-direction: row-reverse;
+  }
+}
+
+@include make-rows($breakpoints);

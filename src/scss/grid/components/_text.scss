@@ -1,0 +1,17 @@
+@import '../bootstrap.scss';
+
+.text {
+  @include variant('left') {
+    text-align: left;
+  }
+
+  @include variant('right') {
+    text-align: right;
+  }
+
+  @include variant('center') {
+    text-align: center;
+  }
+}
+
+@include make-text($breakpoints);
