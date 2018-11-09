@@ -32,7 +32,7 @@ input[type='url'] {
   line-height: 4rem;
   height: 4rem;
   border-radius: $border-radius;
-  border: 1px solid $peach;
+  border: 1px solid $magenta;
   @include boxshadow(topright, small, light, inset);
   font-weight: 300;
   min-width: 6rem;
@@ -56,7 +56,7 @@ textarea {
   height: 4rem;
   line-height: 1.5;
   border-radius: $border-radius;
-  border: 1px solid $peach;
+  border: 1px solid $magenta;
   box-shadow: inset 2px 2px 4px -1px rgba(0, 0, 0, 0.375);
   font-weight: 300;
   min-width: 6rem;
@@ -79,6 +79,16 @@ legend {
 
 a, a:active, a:visited {
   color: $magenta;
+  @include bold;
+}
+
+h2 {
+  color: $brown;
+  @include bold;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 2rem 0;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -138,7 +148,13 @@ a.button {
   color: $white;
 
   &:hover {
-    background-color: lighten($marigold, 30%);
+    background-color: darken($marigold, 5%);
+  }
+
+  &--primary {
+    display: inline-block;
+    font-size: 1.8rem;
+    @include bold;
   }
 
   &--link {
@@ -157,11 +173,7 @@ a.button {
 
   &--next {
     font-size: 3rem;
-    animation-name: bounce;
-    animation-duration: 5s;
-    animation-delay: 2s;
-    animation-iteration-count: 2;
-    animation-timing-function: linear;
+    animation: pulse 3s ease-in-out infinite;
   }
 
   &--icon {
@@ -178,10 +190,6 @@ a.button {
     &:hover {
       background-color: transparent;
     }
-  }
-
-  &--white-text {
-    color: $white;
   }
 }
 
@@ -212,7 +220,7 @@ a.button {
       bottom: 0;
       margin: auto;
       opacity: 0;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s ease;
     }
 
     &::after {

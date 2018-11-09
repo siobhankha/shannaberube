@@ -1,17 +1,3 @@
-// An block has an element.
-@mixin elem($element) {
-  &__#{$element} {
-    @content;
-  }
-}
-
-// An element or block has a mod.
-@mixin mod($modifier) {
-  &--#{$modifier} {
-    @content;
-  }
-}
-
 @mixin fa($char) {
   content: $char;
   display: inline-block;
@@ -172,17 +158,41 @@
 }
 
  @mixin breakpoint($point) {
-   @if $point == lg {
-     @media (min-width: 120rem) { @content ; }
+  @if $point == xl {
+    @media (min-width: 1200px) { @content ; }
   }
-    @else if $point == lg {
-     @media (min-width: 80rem) { @content ; }
+  @else if $point == lg {
+    @media (min-width: 800px) { @content ; }
   }
-   @else if $point == md {
-     @media (min-width: 54rem)  { @content ; }
+  @else if $point == md {
+    @media (min-width: 540px)  { @content ; }
   }
   @else if $point == sm {
-     @media (min-width: 32rem)  { @content ; }
+    @media (min-width: 320px)  { @content ; }
+  }
+}
 
+@mixin focus-indicator($color: $white, $posX: 0) {
+  position: relative;
+  outline: none;
+
+  @include fa-before('\f0da') {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: $posX;
+    color: $color;
+    font-weight: 600;
+    font-size: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &:focus {
+    &::before {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 }

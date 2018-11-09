@@ -8,7 +8,7 @@
   position: absolute;
   width: 100%;
   z-index: 4;
-  background: $magenta $gradient;
+  background: $magenta $header-gradient;
   padding: 1rem;
   transition: all 0.3s ease;
 
@@ -16,17 +16,28 @@
     padding: 0 4rem;
   }
 
-  &__logo {
-    visibility: visible;
-    opacity: 1;
-    color: $white;
-    font-size: 3rem;
-    margin: 0;
-    @include display-text;
-    transition: all 0.3s ease;
+  .button {
+    &--logo {
+      visibility: visible;
+      opacity: 1;
+      padding: 0;
+      height: auto;
+      line-height: initial;
+      background: none;
+      @include focus-indicator($white, -1rem);
+    }
 
-    @include breakpoint(md) {
-      font-size: 5rem;
+    &__text {
+      color: $white;
+      font-size: 3rem;
+      line-height: 1.15;
+      margin: 0;
+      @include display-text;
+      transition: all 0.3s ease;
+
+      @include breakpoint(md) {
+        font-size: 5rem;
+      }
     }
   }
 
@@ -62,10 +73,12 @@
       background: none;
       color: $white;
       @include bold;
-      padding: 0.5rem;
+      padding: 0.5rem 0.75rem;
       cursor: pointer;
       outline: none;
       transition: all 0.2s ease-in-out;
+
+      @include focus-indicator();
 
       &::after {
         position: absolute;
@@ -97,7 +110,7 @@
 
   &--landing {
     background: transparent;
-    & .header__logo {
+    .button--logo {
       visibility: hidden;
       opacity: 0;
     }

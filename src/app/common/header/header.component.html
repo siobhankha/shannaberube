@@ -1,5 +1,7 @@
 <header block='header' [mod]='format'>
-  <h1 elem='logo' (click)='scroll(0)' role='button' [attr.aria-hidden]='format != "landing"'>Shanna Berube</h1>
+  <button (click)='scroll(0)' [attr.aria-hidden]='format != "landing"' block='button' mod='logo'>
+    <h1 elem='text'>Shanna Berube</h1>
+  </button>
 
   <nav>
     <ul elem='nav'>

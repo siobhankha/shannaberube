@@ -6,14 +6,17 @@
 
 <div block='app' [mod]='"section-"+activeSection' role='main'>
   <app-landing elem='section' mod='landing'
+    [active]='activeSection == 0'
     (scrollToSection)='scroll($event)'
     [attr.aria-hidden]='activeSection != 0'>
   </app-landing>
   <app-about elem='section' mod='about'
+    [active]='activeSection == 1'
     (scrollToSection)='scroll($event)'
     [attr.aria-hidden]='activeSection != 1'>
   </app-about>
   <app-contact elem='section' mod='contact'
+    [active]='activeSection == 2'
     (scrollToSection)='scroll($event)'
     [attr.aria-hidden]='activeSection != 2'>
   </app-contact>

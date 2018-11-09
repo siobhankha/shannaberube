@@ -2,6 +2,6 @@
 <div block='landing'>
   <h1 elem='title'>Hi. I'm Shanna.</h1>
   <p elem='description'>I'm a Front-End Software Engineer in Chicago, IL.</p>
-  <button block='button' mod='icon next white-text' (click)='nextSection()'><i class="fas fa-chevron-down"></i></button>
+  <app-next elem='next' theme='light' (next)='nextSection()' [active]='active'></app-next>
 </div>
 

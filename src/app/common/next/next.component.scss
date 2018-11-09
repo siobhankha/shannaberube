@@ -1,0 +1,26 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.button {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+
+  &:focus,
+  &:hover {
+    background-color: rgba($magenta, 0.25);
+  }
+
+  &--light {
+    color: $white;
+    &:focus,
+    &:hover {
+      background-color: rgba($white, 0.25);
+    }
+  }
+}

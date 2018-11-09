@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Component, Input } from '@angular/core'
 import { AboutComponent } from './about.component';
 
 describe('AboutComponent', () => {
@@ -8,7 +8,7 @@ describe('AboutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AboutComponent ]
+      declarations: [ AboutComponent, MockNextComp ]
     })
     .compileComponents();
   }));
@@ -22,4 +22,17 @@ describe('AboutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit event', () => {
+    spyOn(component.scrollToSection, 'emit');
+
+    component.nextSection()
+
+    expect(component.scrollToSection.emit).toHaveBeenCalledWith(2)
+  })
 });
+
+@Component({selector: 'app-next', template: ''})
+class MockNextComp {
+  @Input() active: any
+}

@@ -1,3 +1,27 @@
 <div block='contact'>
-  contact info
+  <h2>Get in touch</h2>
+  <div elem='photo'>
+    <img src='/assets/shanna_berube.jpg' alt='A photo of Shanna Berube'>
+  </div>
+  <p elem='email'><a href='mailto:hello@shannaberube.com' [tabindex]='active ? 0 : -1'>hello@shannaberube.com</a></p>
+  <ul elem='social'>
+    <li elem='link'>
+      <a href='https://www.linkedin.com/in/shannaberube/'
+         [tabindex]='active ? 0 : -1'
+         target='_blank' rel='noopener'
+         block='button' mod='icon'
+         aria-label='Find me on LinkedIn'><i class="fab fa-linkedin"></i></a>
+    </li>
+    <li elem='link'>
+      <a href='https://github.com/siobhankha/shannaberube'
+         [tabindex]='active ? 0 : -1'
+         target='_blank' rel='noopener'
+         block='button' mod='icon'
+         aria-label='Find me on GitHub'><i class="fab fa-github-square"></i></a>
+    </li>
+  </ul>
+
+  <footer elem='footer'>
+    <p>Shanna Berube &copy;2018</p>
+  </footer>
 </div>

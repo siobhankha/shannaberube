@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { BlockDirective } from './bem';
 import { ElemDirective } from './bem';
 import { HeaderComponent } from './header/header.component';
+import { NextComponent } from './next/next.component';
 
 @NgModule({
   declarations: [
     BlockDirective,
     ElemDirective,
-    HeaderComponent
+    HeaderComponent,
+    NextComponent
   ],
   imports: [
     CommonModule
@@ -16,7 +18,8 @@ import { HeaderComponent } from './header/header.component';
   exports: [
     BlockDirective,
     ElemDirective,
-    HeaderComponent
+    HeaderComponent,
+    NextComponent
   ]
 })
 export class AppCommonModule {

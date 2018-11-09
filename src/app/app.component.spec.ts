@@ -1,6 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
+import { Component, Input } from '@angular/core'
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { BlockDirective, ElemDirective } from './common/bem'
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,7 +11,13 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MockHeaderComp,
+        MockLandingComp,
+        MockAboutComp,
+        MockContactComp,
+        BlockDirective,
+        ElemDirective
       ],
     }).compileComponents();
   }));
@@ -20,16 +28,32 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'my-app'`, () => {
+  it('should set the active section', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('my-app');
-  });
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to my-app!');
-  });
+    app.scroll('..target..')
+    expect(app.activeSection).toEqual('..target..')
+  })
 });
+
+@Component({selector: 'app-header', template: ''})
+class MockHeaderComp {
+  @Input() format: any
+  @Input() activeSection: any
+}
+
+@Component({selector: 'app-landing', template: ''})
+class MockLandingComp {
+  @Input() active: any
+}
+
+@Component({selector: 'app-about', template: ''})
+class MockAboutComp {
+  @Input() active: any
+}
+
+@Component({selector: 'app-contact', template: ''})
+class MockContactComp {
+  @Input() active: any
+}
