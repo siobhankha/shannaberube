@@ -9,7 +9,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() format: string = ''
 
-  @Input() activeSection: string
+  @Input() activeSection: number
 
   @Output() scrollToSection = new EventEmitter()
 
